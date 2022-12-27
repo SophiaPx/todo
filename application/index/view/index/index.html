@@ -1,0 +1,73 @@
+<head>
+    <style>
+        /* CSS for styling the to-do list */
+    form {
+    display: flex;
+    align-items: center;
+    }
+
+    input[type="text"] {
+    flex: 1;
+    margin-right: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
+    }
+
+    button[type="submit"] {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    }
+
+    li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    }
+
+    button[type="submit"] {
+    margin-left: 0.5em;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    }
+
+
+    </style>
+</head>
+<body>
+<form action="{:url('index/index/save')}" method="post">
+    <input type="text" name="task" placeholder="Add a new task">
+    <button type="submit">add</button>
+</form>
+  
+  <!-- HTML for displaying the to-do list -->
+  <h1>正在进行：</h1>
+  {volist name="task" id="vo"}
+  <ul>
+      <li>
+        <form action="{:url('index/index/change')}" method="post">
+        <button type="submit" name="task" onclick="javascript:window.location.href='change.html'" value="{$vo.task}">
+            ✔️</button>
+        </form>
+        &nbsp;
+         {$vo.task}
+      </li>
+  </ul>
+  {/volist}
+  
+  <h1>已经完成:</h1>
+  {volist name="finish" id="fi"}
+  <ul>
+      <li>
+          {$fi.task}
+      </li>
+      
+  </ul>
+  {/volist}
+</body>
+  

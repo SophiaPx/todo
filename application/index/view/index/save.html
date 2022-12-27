@@ -1,0 +1,20 @@
+<head>
+    
+</head>
+<body>
+<form action="{:url('index/index/save')}" method="post">
+    <input type="text" name="task" placeholder="Add a new task">
+    <button type="submit">Add</button>
+</form>
+  
+  <!-- HTML for displaying the to-do list -->
+  {volist name="task" id="vo"}
+  <ul>
+      <li>
+        {$vo.task}
+      </li>
+
+  </ul>
+  {/volist}
+</body>
+  
